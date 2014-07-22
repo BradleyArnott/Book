@@ -1,0 +1,35 @@
+<% form_for(@product) do |f| %>
+<% if @product.error.any? %>
+<div id='error_explanation'>
+<h2><% pluralise (@product.errors.count, 'error') %>
+prohibited this product from being saved:</h2> 
+
+<ul> 
+<% @product.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+<div class='feild'>
+<%= f.lavel :title %><br>
+<%= f.text_feild :title%>
+</div>
+<div class='feild'>
+<%= f.table :description%><br>
+<%= f.text_area :description, rows: 6 %>
+</div>
+<div class='feild'>
+<%= f.label :image_url %><br>
+<%= f.text_feild :image_url %>
+</div>
+<div class='feild'>
+<%= f.label :price %><br>
+<%= f.text_feild :price%>
+</div>
+<div class='actions'>
+<%= f.submit %>
+</div>
+<% end %>
+
